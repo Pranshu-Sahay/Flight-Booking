@@ -35,25 +35,26 @@ function insertFormHTML() {
         </div>
       </div>
       <div class="form__group">
-        <span><i class="ri-calendar-line"></i></span>
-        <div class="input__content">
-          <div class="input__group">
-            <input type="text" />
-            <label>Departure</label>
-          </div>
-          <p>Add date</p>
+    <span><i class="ri-calendar-line"></i></span>
+    <div class="input__content">
+        <div class="input__group">
+            <input type="date" id="departureDate" required />
+            <label for="departureDate">Departure</label>
         </div>
-      </div>
-      <div class="form__group">
-        <span><i class="ri-calendar-line"></i></span>
-        <div class="input__content">
-          <div class="input__group">
-            <input type="text" />
-            <label>Return</label>
-          </div>
-          <p>Add date</p>
+        <p>Add date</p>
+    </div>
+</div>
+<div class="form__group">
+    <span><i class="ri-calendar-line"></i></span>
+    <div class="input__content">
+        <div class="input__group">
+            <input type="date" id="returnDate" required />
+            <label for="returnDate">Return</label>
         </div>
-      </div>
+        <p>Add date</p>
+    </div>
+</div>
+
       <button class="btn"><i class="ri-search-line"></i></button>
     </form>
   `;

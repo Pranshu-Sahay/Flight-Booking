@@ -10,22 +10,8 @@
     --max-width: 1200px;
 }
 
-@keyframes reloadAnimation {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
 /* Your existing styles */
 
-/* Keep the labels and input fields in place */
 .input__group input:focus+label,
 .input__group input:not(:placeholder-shown)+label {
     top: 0;
@@ -42,30 +28,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    margin-bottom: 20px;
 }
-
-/* Add animation keyframes */
-@keyframes reloadAnimation {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Apply animation to the form container */
-.form-container {
-    animation: reloadAnimation 0.5s ease forwards;
-    opacity: 0;
-    /* Hide the form initially */
-}
-
-
 
 /* Apply animation to the form container */
 .form-container {
@@ -93,16 +56,8 @@
     color: var(--text-dark);
 }
 
-/* Add this CSS for highlighting effect */
-.highlighted {
-    font-weight: bold;
-    /* Add any other styling you want for highlighting */
-}
 
-/* Add styles for highlighting class options */
-.booking__nav .class-option.active {
-    font-weight: bold;
-}
+
 
 .btn {
     padding: 0.75rem 2rem;
@@ -203,6 +158,7 @@ nav {
     background-color: var(--primary-color);
 }
 
+
 .booking__container form {
     margin-top: 4rem;
     display: grid;
@@ -210,7 +166,8 @@ nav {
     gap: 1rem;
 }
 
-.booking__container .input__content {
+.booking__container .input__content,
+.booking__container .input__group {
     width: 100%;
 }
 
@@ -242,7 +199,7 @@ nav {
     font-weight: 500;
     color: var(--text-dark);
     pointer-events: none;
-    transition: 0.3s;
+    transition: font-size 0.3s, top 0.3s;
 }
 
 .booking__container input {
@@ -264,11 +221,6 @@ nav {
     margin-top: 0.5rem;
     font-size: 0.8rem;
     color: var(--text-light);
-}
-
-.booking__container .btn {
-    padding: 1rem;
-    font-size: 1.5rem;
 }
 
 .about__container .subheader {
@@ -298,23 +250,6 @@ nav {
     gap: 2rem;
 }
 
-.about__content .number {
-    display: inline-block;
-    padding: 5px 15px;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--white);
-    background-color: var(--primary-color);
-    border-radius: 2rem;
-}
-
-.about__content .number:nth-child(4) {
-    background-color: #e98b6d;
-}
-
-.about__content .number:nth-child(7) {
-    background-color: #ffcca3;
-}
 
 .about__content h4 {
     font-size: 1.2rem;
@@ -357,8 +292,6 @@ nav {
     transform: translate(calc(-50% + 9rem), calc(-50% + 5rem));
 }
 
-
-
 .footer {
     background-color: var(--primary-color);
 }
@@ -369,15 +302,9 @@ nav {
     gap: 5rem;
 }
 
-.footer__col h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--white);
-    margin-bottom: 1rem;
-}
-
+.footer__col h3,
 .footer__col h4 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: var(--white);
     margin-bottom: 1rem;
@@ -408,9 +335,7 @@ nav {
     color: var(--extra-light);
 }
 
-
-
-@media (width < 900px) {
+@media (max-width: 900px) {
     nav .btn {
         display: none;
     }
@@ -425,22 +350,21 @@ nav {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .plan__grid {
+    .about__grid {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .plan__image {
+    .about__image {
         min-height: 600px;
         grid-area: 1/1/2/2;
     }
-
 
     .footer__container {
         gap: 2rem;
     }
 }
 
-@media (width < 600px) {
+@media (max-width: 600px) {
     .nav__links {
         display: none;
     }
@@ -452,7 +376,6 @@ nav {
     .booking__container form {
         grid-template-columns: repeat(1, 1fr);
     }
-
 
     .footer__container {
         grid-template-columns: 1fr;
