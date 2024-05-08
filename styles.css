@@ -434,6 +434,12 @@ nav {
     }
 }
 
+.socials a span i 
+{
+    color: #ffffff;
+    
+}
+
 @media (max-width: 600px) {
     .nav__links {
         display: none;
