@@ -5,7 +5,8 @@
 }
 
 
-body {
+body 
+{
     font-family: Arial, sans-serif;
     background-image: url('assets/background.jpg');
     background-size: cover;
@@ -18,21 +19,28 @@ body {
 
 
 
-.signup-container {
+.signup-container 
+{
     max-width: 400px;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255, 0.8);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 
-.signup-form {
+.signup-form 
+{
     margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 
-.signup-form label {
+.signup-form label 
+{
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
@@ -41,7 +49,8 @@ body {
 
 .signup-form input[type="text"],
 .signup-form input[type="email"],
-.signup-form input[type="password"] {
+.signup-form input[type="password"] 
+{
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -50,7 +59,8 @@ body {
 }
 
 
-.signup-form button[type="submit"] {
+button[type="submitbutton"]
+{
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -60,20 +70,24 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.signup-form button[type="submit"]:hover {
+button[type="submitbutton"]:hover
+{
     background-color: #0056b3;
 }
 
 
-.signup-container p {
+.signup-container p 
+{
     margin-top: 10px;
 }
 
-.signup-container p a {
+.signup-container p a 
+{
     color: #007bff;
     text-decoration: none;
 }
 
-.signup-container p a:hover {
+.signup-container p a:hover 
+{
     text-decoration: underline;
 }

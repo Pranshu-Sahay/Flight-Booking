@@ -1,67 +1,30 @@
-// Function to dynamically insert the form HTML into the container
-function insertFormHTML() {
-    const formContainer = document.getElementById('formContainer');
-    formContainer.innerHTML = `
-    <form>
-      <!-- Form content -->
-      <div class="form__group">
-        <span><i class="ri-map-pin-line"></i></span>
-        <div class="input__content">
-          <div class="input__group">
-            <input type="text" />
-            <label>From</label>
-          </div>
-          <p>Departure location</p>
-        </div>
-      </div>
-      <div class="form__group">
-        <span><i class="ri-map-pin-line"></i></span>
-        <div class="input__content">
-          <div class="input__group">
-            <input type="text" />
-            <label>To</label>
-          </div>
-          <p>Destination location</p>
-        </div>
-      </div>
-      <div class="form__group">
-        <span><i class="ri-user-3-line"></i></span>
-        <div class="input__content">
-          <div class="input__group">
-            <input type="number" />
-            <label>Travellers</label>
-          </div>
-          <p>Add guests</p>
-        </div>
-      </div>
-      <div class="form__group">
-    <span><i class="ri-calendar-line"></i></span>
-    <div class="input__content">
-        <div class="input__group">
-            <input type="date" id="departureDate" required />
-            <label for="departureDate">Departure</label>
-        </div>
-        <p>Add date</p>
-    </div>
-</div>
-<div class="form__group">
-    <span><i class="ri-calendar-line"></i></span>
-    <div class="input__content">
-        <div class="input__group">
-            <input type="date" id="returnDate" required />
-            <label for="returnDate">Return</label>
-        </div>
-        <p>Add date</p>
-    </div>
-</div>
 
-      <button class="btn"><i class="ri-search-line"></i></button>
-    </form>
-  `;
+function toggleOptions(containerId) 
+{
+    const optionsContainer = document.getElementById(containerId);
+    optionsContainer.classList.toggle('active'); // Toggle the 'active' class
+}
+
+
+
+
+function insertFormHTML() 
+{
+    const formContainer = document.getElementById('formContainer');
     // Trigger reflow to apply the animation
     void formContainer.offsetWidth;
     formContainer.style.opacity = '1'; // Show the form container after reflow
 }
+
+
+function selectOption(value, inputId) 
+{
+    const inputElement = document.getElementById(inputId);
+    inputElement.value = value;
+    const optionsContainer = document.getElementById(inputId + 'Options');
+    optionsContainer.classList.remove('active'); // Hide options after selection
+}
+
 
 
 let firstLoad = true;

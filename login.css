@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-body {
+body 
+{
     font-family: Arial, sans-serif;
     background-image: url('assets/background.jpg');
     background-size: cover;
@@ -16,7 +17,8 @@ body {
 }
 
 
-.login-container {
+.login-container 
+{
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
@@ -27,20 +29,24 @@ body {
 }
 
 
-.login-form {
+.login-form 
+{
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 
-label {
+label 
+{
     margin-bottom: 8px;
     font-weight: bold;
 }
 
 
 input[type="text"],
-input[type="password"] {
+input[type="password"] 
+{
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
@@ -49,13 +55,20 @@ input[type="password"] {
 }
 
 
-button[type="submit"] {
+button[type="submit"] 
+{
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+button[type="submit"]:hover 
+{
+    background-color: #0056b3;
 }
 
 
@@ -65,6 +78,7 @@ p a {
 }
 
 
-p a:hover {
+p a:hover 
+{
     text-decoration: underline;
 }

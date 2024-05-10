@@ -31,11 +31,78 @@
 }
 
 /* Apply animation to the form container */
-.form-container {
+.form-container 
+{
     animation: reloadAnimation 0.5s ease forwards;
     opacity: 0;
     /* Hide the form initially */
 }
+
+.options-container 
+{
+    position: absolute;
+        /* Position it relative to its parent */
+    max-height: 150px;
+        /* Limit the height to avoid overflow */
+    overflow-y: auto;
+        /* Add scrollbar if needed */
+    background-color: #ffffff;
+        /* Background color */
+    border: 1px solid #ccc;
+        /* Add a border */
+    border-radius: 5px;
+        /* Add border radius for rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        /* Add a shadow */
+    display: none;
+        /* Hide it by default */
+}
+
+.options-container.active 
+{
+    display: block;
+}
+
+.option {
+    padding: 5px 10px;
+    /* Add padding */
+    cursor: pointer;
+    /* Change cursor to pointer */
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+    /* Change background color on hover */
+}
+
+@media (min-width: 1025px) 
+{
+
+    .option  
+    {
+        min-width: 25.26%;
+        max-width: 17.6875rem;
+        width: 100%;
+    }
+}
+
+/* Style the triangle indicator */
+.input__content:before {
+    content: '';
+        position: absolute;
+        top: calc(100% - 5px);
+        /* Position it just below the placeholder */
+        left: 50%;
+        /* Center it horizontally */
+        transform: translateX(-50%);
+        /* Adjust for centering */
+        border-width: 0 5px 5px;
+        /* Create a smaller triangle shape */
+        border-style: solid;
+        border-color: transparent transparent #ccc;
+        /* Match background color */
+}
+
 
 * {
     padding: 0;
@@ -57,6 +124,55 @@
 }
 
 
+
+.btn {
+    padding: 0.75rem 2rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    display: flex;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+nav {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* gap: 1rem; */
+}
+
+/* .nav__logo 
+{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-right: 10px;
+} */
+
 .newtons-cradle {
     --uib-size: 50px;
     --uib-speed: 1.2s;
@@ -67,6 +183,7 @@
     justify-content: center;
     width: var(--uib-size);
     height: var(--uib-size);
+    margin-right: 0px;
 }
 
 .newtons-cradle__dot {
@@ -129,58 +246,22 @@
     }
 }
 
-.btn {
-    padding: 0.75rem 2rem;
-    outline: none;
-    border: none;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--white);
-    background-color: var(--primary-color);
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background-color: var(--primary-color-dark);
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    width: 100%;
-    display: flex;
-}
-
-body {
-    font-family: "Poppins", sans-serif;
-}
-
-nav {
-    max-width: var(--max-width);
-    margin: auto;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-/* .nav__logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-dark);
-} */
-
-.nav__links {
+.nav__links 
+{
     list-style: none;
     display: flex;
     align-items: center;
     gap: 2rem;
+    /* margin-right: 200px; */
 }
+
+
+.Log_in .btn
+{
+    padding: 5px 10px;
+    
+}
+
 
 .link a {
     font-weight: 500;
@@ -434,11 +515,11 @@ nav {
     }
 }
 
-.socials a span i 
+/* .socials a span i 
 {
     color: #ffffff;
     
-}
+} */
 
 @media (max-width: 600px) {
     .nav__links {
