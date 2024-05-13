@@ -37,9 +37,24 @@ function clearFormInputs() {
     document.getElementById('returnDate').value = '';
 }
 
+
+function isAuthenticated() {
+    // Check if the user is authenticated (e.g., by checking for a stored token)
+    // Return true if authenticated, false otherwise
+    return false; // Replace this with your authentication logic
+}
+
 // Function to handle form submission
 function handleFormSubmission(event) {
     event.preventDefault(); // Prevent form submission
+
+
+    if (!isAuthenticated()) {
+        // If not authenticated, redirect to the login page
+        window.location.href = 'login.html';
+        return; // Stop further execution
+    }
+
 
     // Retrieve form input values
     const departure = document.getElementById('departureInput').value;
@@ -103,7 +118,10 @@ function handleClassOptionClick(option) {
 
 
 
-
+function updateNavigationButtons(username) {
+    const loginButtons = document.querySelector('.Log_in');
+    loginButtons.innerHTML = `<p>Welcome, ${username}</p>`; // Display the username
+}
 
 
 
