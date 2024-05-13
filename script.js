@@ -1,9 +1,246 @@
 
-function toggleOptions(containerId) 
-{
+function toggleOptions(containerId) {
     const optionsContainer = document.getElementById(containerId);
     optionsContainer.classList.toggle('active'); // Toggle the 'active' class
 }
+
+// Declare the selectedOptionsTable variable
+const selectedOptionsTable = document.getElementById('selectedOptions');
+
+// Function to update the summary table with the selected class name and form details
+function updateSummary(className, departure, destination, travellers, departureDate, returnDate) {
+    // Clear existing rows
+    selectedOptionsTable.innerHTML = '';
+
+    // Create a new row with the selected class name and form details
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${className}</td>
+        <td>${departure}</td>
+        <td>${destination}</td>
+        <td>${travellers}</td>
+        <td>${departureDate}</td>
+        <td>${returnDate}</td>
+        <td><button class="book-btn">Book</button></td> 
+    `;
+
+    // Append the new row to the table body
+    selectedOptionsTable.appendChild(row);
+}
+
+// Function to clear form inputs
+function clearFormInputs() {
+    document.getElementById('departureInput').value = '';
+    document.getElementById('destinationInput').value = '';
+    document.querySelector('input[type="number"]').value = '';
+    document.getElementById('departureDate').value = '';
+    document.getElementById('returnDate').value = '';
+}
+
+// Function to handle form submission
+function handleFormSubmission(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Retrieve form input values
+    const departure = document.getElementById('departureInput').value;
+    const destination = document.getElementById('destinationInput').value;
+    const travellers = document.querySelector('input[type="number"]').value;
+    const departureDate = document.getElementById('departureDate').value;
+    const returnDate = document.getElementById('returnDate').value;
+
+    // Update localStorage with form input values
+    localStorage.setItem('departure', departure);
+    localStorage.setItem('destination', destination);
+    localStorage.setItem('travellers', travellers);
+    localStorage.setItem('departureDate', departureDate);
+    localStorage.setItem('returnDate', returnDate);
+
+    // Update summary with latest form details
+    const selectedClass = document.querySelector(".booking__nav .class-option.selected");
+    if (selectedClass) {
+        handleClassOptionClick(selectedClass);
+    }
+
+    // Clear the form inputs
+    clearFormInputs();
+}
+
+// Event listener for clicking on the search button
+document.querySelector('form').addEventListener('submit', handleFormSubmission);
+
+// Rest of your existing code...
+
+
+
+// Function to handle class option click
+function handleClassOptionClick(option) {
+    // Reset all options to default style
+    const classOptions = document.querySelectorAll(".booking__nav .class-option");
+    classOptions.forEach(opt => {
+        opt.style.backgroundColor = "var(--extra-light)";
+        opt.style.color = "var(--text-light)";
+    });
+
+    // Apply selected style to the clicked option
+    option.style.backgroundColor = "var(--primary-color)";
+    option.style.color = "var(--white)";
+
+    // Update summary with selected class name and form details
+    const className = option.textContent;
+    const departure = localStorage.getItem('departure');
+    const destination = localStorage.getItem('destination');
+    const travellers = localStorage.getItem('travellers');
+    const departureDate = localStorage.getItem('departureDate');
+    const returnDate = localStorage.getItem('returnDate');
+    updateSummary(className, departure, destination, travellers, departureDate, returnDate);
+
+    // Reset opacity of form container
+    document.getElementById('formContainer').style.opacity = '0';
+    setTimeout(() => {
+        insertFormHTML(); // Reload form container with opacity animation
+    }, 500);
+}
+
+
+
+
+
+
+
+
+
+
+
+// Function to clear form inputs
+function clearFormInputs() {
+    document.getElementById('departureInput').value = '';
+    document.getElementById('destinationInput').value = '';
+    document.querySelector('input[type="number"]').value = '';
+    document.getElementById('departureDate').value = '';
+    document.getElementById('returnDate').value = '';
+}
+
+// Function to clear the summary table
+function clearSummaryTable() {
+    selectedOptionsTable.innerHTML = '';
+}
+
+// Function to handle class option click
+function handleClassOptionClick(option) {
+    // Clear the summary table
+    clearSummaryTable();
+
+    // Reset all options to default style
+    const classOptions = document.querySelectorAll(".booking__nav .class-option");
+    classOptions.forEach(opt => {
+        opt.style.backgroundColor = "var(--extra-light)";
+        opt.style.color = "var(--text-light)";
+    });
+
+    // Apply selected style to the clicked option
+    option.style.backgroundColor = "var(--primary-color)";
+    option.style.color = "var(--white)";
+
+    // Update summary with selected class name and form details
+    const className = option.textContent;
+    updateSummary(className);
+}
+
+// Event listener for class options
+document.querySelectorAll(".booking__nav .class-option").forEach(option => {
+    option.addEventListener("click", function () {
+        handleClassOptionClick(option);
+    });
+});
+
+// Event listener for clicking on the search button
+document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Retrieve form input values
+    const departure = document.getElementById('departureInput').value;
+    const destination = document.getElementById('destinationInput').value;
+    const travellers = document.querySelector('input[type="number"]').value;
+    const departureDate = document.getElementById('departureDate').value;
+    const returnDate = document.getElementById('returnDate').value;
+
+    // Clear the summary table
+    clearSummaryTable();
+
+    // Update summary with latest form details
+    const selectedClass = document.querySelector(".booking__nav .class-option.selected");
+    if (selectedClass) {
+        handleClassOptionClick(selectedClass);
+    }
+
+    // Clear the form inputs
+    clearFormInputs();
+});
+
+// Function to handle page load
+document.addEventListener("DOMContentLoaded", function () {
+    // Clear the form inputs and summary table
+    clearFormInputs();
+    clearSummaryTable();
+});
+
+// Rest of your existing code...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Event listener for class options
+document.querySelectorAll(".booking__nav .class-option").forEach(option => {
+    option.addEventListener("click", function () {
+        handleClassOptionClick(option);
+    });
+});
+
+// Event listener for clicking on the search button
+document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Retrieve form input values
+    const departure = document.getElementById('departureInput').value;
+    const destination = document.getElementById('destinationInput').value;
+    const travellers = document.querySelector('input[type="number"]').value;
+    const departureDate = document.getElementById('departureDate').value;
+    const returnDate = document.getElementById('returnDate').value;
+
+    // Update localStorage with form input values
+    localStorage.setItem('departure', departure);
+    localStorage.setItem('destination', destination);
+    localStorage.setItem('travellers', travellers);
+    localStorage.setItem('departureDate', departureDate);
+    localStorage.setItem('returnDate', returnDate);
+
+    // Update summary with latest form details
+    const selectedClass = document.querySelector(".booking__nav .class-option.selected");
+    if (selectedClass) {
+        handleClassOptionClick(selectedClass);
+    }
+
+    // Reset the form
+    document.querySelector('form').reset();
+});
+
+// Rest of your existing code...
+
+
+
+
+
 
 
 
@@ -17,13 +254,17 @@ function insertFormHTML()
 }
 
 
-function selectOption(value, inputId) 
-{
+function selectOption(value, inputId) {
     const inputElement = document.getElementById(inputId);
     inputElement.value = value;
     const optionsContainer = document.getElementById(inputId + 'Options');
-    optionsContainer.classList.remove('active'); // Hide options after selection
+    if (optionsContainer) {
+        optionsContainer.classList.remove('active'); // Hide options after selection
+    } else {
+        console.error('Options container not found:', inputId + 'Options');
+    }
 }
+
 
 
 
@@ -80,13 +321,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 // Event listener for economy class
 const economyClassOption = document.querySelector('.economy-class');
-economyClassOption.addEventListener('click', () => {
-    if (firstLoad) {
+economyClassOption.addEventListener('click', () => 
+    {
+        
+    if (firstLoad) 
+    {
         firstLoad = false;
         insertFormHTML();
-    } else {
+    } else 
+    {
+       
         setTimeout(() => {
             document.getElementById('formContainer').style.opacity = '0'; // Hide the form container before reloading
             setTimeout(() => {
@@ -98,11 +345,15 @@ economyClassOption.addEventListener('click', () => {
 
 // Event listener for business class
 const businessClassOption = document.querySelector('.business-class');
-businessClassOption.addEventListener('click', () => {
+businessClassOption.addEventListener('click', () => 
+    {
+        
     if (firstLoad) {
         firstLoad = false;
         insertFormHTML();
-    } else {
+    } else 
+    {
+        
         setTimeout(() => {
             document.getElementById('formContainer').style.opacity = '0'; // Hide the form container before reloading
             setTimeout(() => {
@@ -114,11 +365,15 @@ businessClassOption.addEventListener('click', () => {
 
 // Event listener for first class
 const firstClassOption = document.querySelector('.first-class');
-firstClassOption.addEventListener('click', () => {
+firstClassOption.addEventListener('click', () => 
+    {
+        
     if (firstLoad) {
         firstLoad = false;
         insertFormHTML();
-    } else {
+    } else 
+    {
+        
         setTimeout(() => {
             document.getElementById('formContainer').style.opacity = '0'; // Hide the form container before reloading
             setTimeout(() => {

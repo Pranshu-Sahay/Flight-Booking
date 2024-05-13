@@ -27,6 +27,7 @@
             <li class="link"><a href="#book" id="book-link">Book</a></li>
             <li class="link"><a href="#about" id="about-link">About</a></li>
             <li class="link"><a href="#contact" id="contact-link">Contact</a></li>
+            <li class="link"><a href="cancel.html" id="cancel">Cancel Ticket</a></li>
         </ul>
         
         <ul class="Log_in">
@@ -110,14 +111,35 @@
                     <span><i class="ri-calendar-line"></i></span>
                     <div class="input__content">
                         <div class="input__group">
-                            <input type="date" id="returnDate" required />
+                            <input type="date" id="returnDate" />
                             <label for="returnDate">Return</label>
                         </div>
                         <p>Add date</p>
                     </div>
                 </div>
-                <button class="btn"><i class="ri-search-line"></i></button>
+            <button class="btn"><i class="ri-search-line"></i></button>
             </form>
+        </div>
+
+        
+        <div class="bookingSummary">
+            <h1>Booking Summary</h1>
+            <div class="summaryTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Departure</th>
+                    <th>Destination</th>
+                    <th>Travellers</th>
+                    <th>Departure Date</th>
+                    <th>Return Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="selectedOptions"></tbody>
+        </table>
+        </div>
         </div>
     </section>
 
