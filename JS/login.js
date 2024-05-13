@@ -1,24 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("login-form").addEventListener("submit", function (event) {
-        event.preventDefault();
+    const loginForm = document.querySelector(".login-form");
 
-        // Retrieve username and password from the form
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
-        // Here you would typically send a request to your server to validate the credentials
-        // For this example, let's assume authentication is successful
-        const isAuthenticated = true; // Replace this with your authentication logic
+            // Retrieve username and password from the form
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
 
-        if (isAuthenticated) {
-            // Store the username in localStorage or session storage for future use
-            localStorage.setItem("username", username);
+            // Retrieve existing users from localStorage
+            const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-            // Redirect the user to the main page
-            window.location.href = "index.html";
-        } else {
-            // Display an error message or handle authentication failure
-            alert("Invalid username or password. Please try again.");
-        }
-    });
+            // Check if the entered username and password match with any existing user
+            const user = existingUsers.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                // Store the username in localStorage for future use
+                localStorage.setItem("username", username);
+
+                // Redirect the user to the main page
+                window.location.href = "index.html";
+            } else {
+                // Display an error message or handle authentication failure
+                alert("Invalid username or password. Please try again.");
+            }
+        });
+    } else {
+        console.error("Login form not found.");
+    }
 });

@@ -1,9 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("signup-form").addEventListener("submit", function (event) {
+    const signUpForm = document.querySelector(".signup-form");
 
-        event.preventDefault();
+    if (signUpForm) {
+        signUpForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
+            // Retrieve sign-up data from the form
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
 
-        window.location.href = "index.html";
-    });
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            // Check if the user already exists
+            const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+            const userExists = existingUsers.some(user => user.username === username || user.email === email);
+
+            if (userExists) {
+                alert("User with the provided username or email already exists. Please try again with different credentials.");
+                return;
+            }
+
+            // Create user object
+            const newUser = {
+                username: username,
+                email: email,
+                password: password
+            };
+
+            // Add the new user to the existing users array
+            existingUsers.push(newUser);
+
+            // Store the updated user data in localStorage
+            localStorage.setItem("users", JSON.stringify(existingUsers));
+
+            // Redirect the user to the login page
+            window.location.href = "login.html";
+        });
+    } else {
+        console.error("Sign-up form not found.");
+    }
 });

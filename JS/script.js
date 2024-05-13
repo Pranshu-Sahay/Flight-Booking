@@ -41,8 +41,10 @@ function clearFormInputs() {
 function isAuthenticated() {
     // Check if the user is authenticated (e.g., by checking for a stored token)
     // Return true if authenticated, false otherwise
-    return false; // Replace this with your authentication logic
+    const username = localStorage.getItem('username');
+    return !!username; // Return true if username exists, false otherwise
 }
+
 
 // Function to handle form submission
 function handleFormSubmission(event) {
@@ -202,7 +204,37 @@ document.addEventListener("DOMContentLoaded", function () {
     clearSummaryTable();
 });
 
-// Rest of your existing code...
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Check if the user is authenticated
+    const username = localStorage.getItem("username");
+    if (username) 
+    {
+        // If authenticated, update the navigation buttons with the username
+        updateNavigationButtons(username);
+    }
+});
+
+function updateNavigationButtons(username) {
+    const loginButtons = document.querySelector('.Log_in');
+    if (username) {
+        loginButtons.innerHTML = `<p>Welcome, ${username}</p><button id="logoutBtn" class="btn">Logout</button>`;
+        document.getElementById('logoutBtn').addEventListener('click', function () 
+        {
+            localStorage.removeItem('username');
+            // Redirect to the login page
+            window.location.href = 'index.html';
+        });
+    } else 
+    {
+        loginButtons.innerHTML = `<button class="btn"><a href="login.html" class="btn">Log In</a></button><button class="btn"><a href="signup.html" class="btn">Sign Up</a></button>`;
+    }
+}
+
 
 
 
