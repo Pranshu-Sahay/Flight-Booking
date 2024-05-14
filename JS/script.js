@@ -1,4 +1,3 @@
-
 function toggleOptions(containerId) {
     const optionsContainer = document.getElementById(containerId);
     optionsContainer.classList.toggle('active'); // Toggle the 'active' class
@@ -45,13 +44,14 @@ function isAuthenticated() {
     return !!username; // Return true if username exists, false otherwise
 }
 
-
 // Function to handle form submission
-function handleFormSubmission(event) {
+function handleFormSubmission(event) 
+{
     event.preventDefault(); // Prevent form submission
 
 
-    if (!isAuthenticated()) {
+    if (!isAuthenticated()) 
+    {
         // If not authenticated, redirect to the login page
         window.location.href = 'login.html';
         return; // Stop further execution
@@ -84,8 +84,6 @@ function handleFormSubmission(event) {
 
 // Event listener for clicking on the search button
 document.querySelector('form').addEventListener('submit', handleFormSubmission);
-
-// Rest of your existing code...
 
 
 
@@ -120,7 +118,8 @@ function handleClassOptionClick(option) {
 
 
 
-function updateNavigationButtons(username) {
+function updateNavigationButtons(username) 
+{
     const loginButtons = document.querySelector('.Log_in');
     loginButtons.innerHTML = `<p>Welcome, ${username}</p>`; // Display the username
 }
@@ -212,8 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     // Check if the user is authenticated
     const username = localStorage.getItem("username");
-    if (username) 
-    {
+    if (username) {
         // If authenticated, update the navigation buttons with the username
         updateNavigationButtons(username);
     }
@@ -223,29 +221,16 @@ function updateNavigationButtons(username) {
     const loginButtons = document.querySelector('.Log_in');
     if (username) {
         loginButtons.innerHTML = `<p>Welcome, ${username}</p><button id="logoutBtn" class="btn">Logout</button>`;
-        document.getElementById('logoutBtn').addEventListener('click', function () 
-        {
+        document.getElementById('logoutBtn').addEventListener('click', function () {
             localStorage.removeItem('username');
             // Redirect to the login page
             window.location.href = 'index.html';
         });
-    } else 
-    {
+    } else {
         loginButtons.innerHTML = `<button class="btn"><a href="login.html" class="btn">Log In</a></button><button class="btn"><a href="signup.html" class="btn">Sign Up</a></button>`;
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -285,18 +270,10 @@ document.querySelector('form').addEventListener('submit', function (event) {
     document.querySelector('form').reset();
 });
 
-// Rest of your existing code...
 
 
 
-
-
-
-
-
-
-function insertFormHTML() 
-{
+function insertFormHTML() {
     const formContainer = document.getElementById('formContainer');
     // Trigger reflow to apply the animation
     void formContainer.offsetWidth;
@@ -374,16 +351,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Event listener for economy class
 const economyClassOption = document.querySelector('.economy-class');
-economyClassOption.addEventListener('click', () => 
-    {
-        
-    if (firstLoad) 
-    {
+economyClassOption.addEventListener('click', () => {
+
+    if (firstLoad) {
         firstLoad = false;
         insertFormHTML();
-    } else 
-    {
-       
+    } else {
+
         setTimeout(() => {
             document.getElementById('formContainer').style.opacity = '0'; // Hide the form container before reloading
             setTimeout(() => {
@@ -395,15 +369,13 @@ economyClassOption.addEventListener('click', () =>
 
 // Event listener for business class
 const businessClassOption = document.querySelector('.business-class');
-businessClassOption.addEventListener('click', () => 
-    {
-        
+businessClassOption.addEventListener('click', () => {
+
     if (firstLoad) {
         firstLoad = false;
         insertFormHTML();
-    } else 
-    {
-        
+    } else {
+
         setTimeout(() => {
             document.getElementById('formContainer').style.opacity = '0'; // Hide the form container before reloading
             setTimeout(() => {
@@ -415,15 +387,13 @@ businessClassOption.addEventListener('click', () =>
 
 // Event listener for first class
 const firstClassOption = document.querySelector('.first-class');
-firstClassOption.addEventListener('click', () => 
-    {
-        
+firstClassOption.addEventListener('click', () => {
+
     if (firstLoad) {
         firstLoad = false;
         insertFormHTML();
-    } else 
-    {
-        
+    } else {
+
         setTimeout(() => {
             document.getElementById('formContainer').style.opacity = '0'; // Hide the form container before reloading
             setTimeout(() => {
